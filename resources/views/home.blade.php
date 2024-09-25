@@ -4,11 +4,11 @@
 <header>
     <nav class="bg-primary px-4 py-2.5">
         <div class="container mx-auto flex justify-between items-center">
-            
-            <a href="/home" class="font-bold text-white">Events System</a>
-               
+            <div class="flex space-x-4">
+                <a href="/home" class="font-medium text-white">Home</a>
+                <a href="/myevents" class="font-medium text-white">Registered Events</a>
+            </div>
             <a href="/logout" class="font-medium text-white">Logout</a>
-                   
         </div>
     </nav>
 </header>

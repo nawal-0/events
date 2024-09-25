@@ -23,7 +23,7 @@ class EventController extends Controller
     public function unregister($id) {
         $event = Event::find($id);
         $event->users()->detach(auth()->user()->id);
-        return redirect('/home');
+        return redirect()->back();
     }
 
     public function create(Request $request) {
@@ -38,5 +38,10 @@ class EventController extends Controller
         $event->save();
         return redirect('/home');
 
+    }
+
+    public function regEvents() {
+        $events = auth()->user()->events;
+        return view('regevents', ['events' => $events]);
     }
 }
