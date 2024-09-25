@@ -14,6 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::create([
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'test@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
         Event::create([
             'title' => 'Laravel Meetup',
             'description' => 'A meetup for Laravel enthusiasts',
@@ -21,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'start_time' => '18:00:00',
             'end_time' => '20:00:00',
             'location' => 'Laravel HQ',
+            'user_id' => 1,
         ]);
 
         Event::create([
@@ -30,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'start_time' => '09:00',
             'end_time' => '17:00',
             'location' => 'Vue.js HQ',
+            'user_id' => 1,
         ]);
 
         Event::create([
@@ -39,6 +48,7 @@ class DatabaseSeeder extends Seeder
             'start_time' => '09:00',
             'end_time' => '17:00',
             'location' => 'React HQ',
+            'user_id' => 1,
         ]);
     }
 }
