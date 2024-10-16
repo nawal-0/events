@@ -1,6 +1,19 @@
 FROM nginx:latest
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get update && apt-get install -y \
+    php-fpm \
+    php-mysql \
+    php-cli \
+    php-xml \
+    php-mbstring \
+    php-curl \
+    php-zip \
+    && apt-get clean
+
+# Install Composer
+ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ 
+WORKDIR /var/www
 
 COPY . /var/www
 COPY --chown=www-data:www-data . /var/www
