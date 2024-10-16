@@ -14,19 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:alpine
+          image: gcr.io/infs-project/my-nginx
           ports:
             - containerPort: 80
-            - containerPort: 443
-          volumeMounts:
-            - mountPath: /var/www
-              name: app-storage
-            - mountPath: /etc/nginx/conf.d
-              name: nginx-config
-      volumes:
-        - name: app-storage
-          persistentVolumeClaim:
-            claimName: app-pvc
-        - name: nginx-config
-          configMap:
-            name: nginx-config
+      
