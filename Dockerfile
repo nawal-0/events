@@ -38,7 +38,10 @@ COPY . /var/www
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www
 
+COPY entrypoint_install.sh /usr/local/bin/entrypoint_install.sh
+RUN chmod +x /usr/local/bin/entrypoint_install.sh
+
 EXPOSE 9000
 
-ENTRYPOINT ["entrypoint_install.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint_install.sh"]
 CMD ["php-fpm"]
