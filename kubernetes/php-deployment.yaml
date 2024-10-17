@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: php-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: php-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: php-app
-          image: gcr.io/infs-project/php-app
+          image: gcr.io/infs-project-1/php-app
           ports:
             - containerPort: 9000
 

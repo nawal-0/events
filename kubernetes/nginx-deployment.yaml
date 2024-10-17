@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: gcr.io/infs-project/my-nginx
+          image: gcr.io/infs-project-1/my-nginx
           ports:
             - containerPort: 80
       
