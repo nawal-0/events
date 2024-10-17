@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all();
+        $events = Event::latest()->where('date', '>=', date('Y-m-d'))->filter(request(['search']))->paginate(6);
         return view('home', ['events' => $events]);
     }
 
@@ -41,7 +41,18 @@ class EventController extends Controller
     }
 
     public function regEvents() {
-        $events = auth()->user()->events;
+        $events = auth()->user()->events()->where('date', '>=', date('Y-m-d'))->paginate(6);
         return view('regevents', ['events' => $events]);
+    }
+
+    public function myEvents() {
+        $events = auth()->user()->createdEvents()->paginate(6);
+        return view('myevents', ['events' => $events]);
+    }
+
+    public function delete($id) {
+        $event = Event::find($id);
+        $event->delete();
+        return redirect()->back();
     }
 }

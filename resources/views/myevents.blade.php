@@ -24,21 +24,23 @@
         </div>
 
         <div class="flex justify-end">
-            <form action="/event/{{ $event->id }}/unregister" method="POST">
+            <form action="/event/{{ $event->id }}/delete" method="POST">
                 @csrf
-            <button class="bg-gray-500 text-white mt-4 px-4 py-2 rounded hover:bg-gray-800">Registered</button>
+            <button class="bg-blue-500 text-white mt-4 px-4 py-2 rounded hover:bg-gray-800">Delete</button>
             </form>
         </div>  
     </div>
     @empty
     
-    <h2 class="text-xl font-bold">No events found</h2>
+    <h2 class="text-xl font-bold">No events created yet!</h2>
     
         
     @endforelse
 
 </div>
 
-
+<div class="mt-4 p-4">
+    {{$events->links()}}
+</div>
 
 @endsection

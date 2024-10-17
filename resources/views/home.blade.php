@@ -1,20 +1,28 @@
 @extends('layout')
 @section('content')
 
-<header>
-    <nav class="bg-primary px-4 py-2.5">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex space-x-4">
-                <a href="/home" class="font-medium text-white">Home</a>
-                <a href="/myevents" class="font-medium text-white">Registered Events</a>
+<x-navbar />
+
+<div class="flex flex-row items-center justify-center p-4">
+<div class="w-1/2">
+    <form class="flex items-center">
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 right-3 flex items-center pl-3 pointer-events-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
             </div>
-            <a href="/logout" class="font-medium text-white">Logout</a>
+            <input type="search" name="search"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" 
+            placeholder="Search..."
+            value="{{ request('search') }}">
         </div>
-    </nav>
-</header>
+    </form>
+</div>
+</div>
 
 <!-- Modal toggle -->
-<div class="flex justify-center mt-6">
+<div class="flex justify-center">
 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-primary hover:bg-primary-dark font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
     Add Event
 </button>
@@ -42,9 +50,10 @@
 
         <div class="flex justify-end">
             @if(auth()->user()->id == $event->user_id) 
-            <button class="bg-gray-500 text-white mt-4 px-4 py-2 rounded" disabled>
-                Creator
-            </button>
+            <form action="/event/{{ $event->id }}/delete" method="POST">
+                @csrf
+            <button class="bg-blue-500 text-white mt-4 px-4 py-2 rounded hover:bg-gray-800">Delete</button>
+            </form>
             @elseif(auth()->user()->events->contains($event->id))
             <form action="/event/{{ $event->id }}/unregister" method="POST">
                 @csrf
@@ -116,6 +125,10 @@
           </div>
       </div>
   </div> 
+
+<div class="mt-4 p-4">
+    {{$events->links()}}
+</div>
   
 
 @endsection

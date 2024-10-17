@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Event::create([
             'title' => 'Laravel Meetup',
             'description' => 'A meetup for Laravel enthusiasts',
-            'date' => '2024-09-22',
+            'date' => '2024-10-24',
             'start_time' => '18:00:00',
             'end_time' => '20:00:00',
             'location' => 'Laravel HQ',
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         Event::create([
             'title' => 'Vue.js Workshop',
             'description' => 'A workshop for Vue.js developers',
-            'date' => '2024-09-23',
+            'date' => '2024-10-24',
             'start_time' => '09:00',
             'end_time' => '17:00',
             'location' => 'Vue.js HQ',
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         Event::create([
             'title' => 'React Conference',
             'description' => 'A conference for React developers',
-            'date' => '2024-09-24',
+            'date' => '2024-10-24',
             'start_time' => '09:00',
             'end_time' => '17:00',
             'location' => 'React HQ',

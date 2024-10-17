@@ -14,4 +14,6 @@ Route::get('/home', [EventController::class , 'index']);
 Route::post('/event/{id}', [EventController::class, 'register']);
 Route::post('/event/{id}/unregister', [EventController::class, 'unregister']);
 Route::post('/event', [EventController::class, 'create']);
-Route::get('/myevents', [EventController::class, 'regEvents']);
+Route::get('/regevents', [EventController::class, 'regEvents']);
+Route::get('/myevents', [EventController::class, 'myEvents']);
+Route::post('/event/{id}/delete', [EventController::class, 'delete']);
