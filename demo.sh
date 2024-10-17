@@ -1,5 +1,5 @@
 # set up
-gcloud container clusters get-credentials infs-project-1 --zone=us-centralc-1
+gcloud container clusters get-credentials cluster-1 --zone=us-central1-c
 kubectl get node -o wide
 
 git clone https://github.com/nawal-0/events.git
@@ -20,7 +20,7 @@ kubectl get pods -o wide
 
 # check reliability
 kubectl cordon <node-name>
-kubectl drain <node-name> --ignore-daemonsets
+kubectl drain <node-name> --ignore-daemonsets --delete-local-data
 kubectl uncordon <node-name>
 
 # manual scaling
